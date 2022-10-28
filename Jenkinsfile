@@ -12,5 +12,16 @@ pipeline{
                 sh 'usr/share/maven/bin/mvn package'
             }
         }
+        stage ('Archive the artifacts') {
+            steps {
+               archiveartifacts :"**/target/*.jar"
+            }
+        }
+        stage ('junits') {
+            steps {
+                junit testresults :"**/surefire-reports/*.xml"
+            }
+        }
+
     }
 }
