@@ -14,12 +14,12 @@ pipeline{
         }
         stage ('Archive the artifacts') {
             steps {
-               archiveartifacts :"**/target/*.jar"
+               archiveartifacts artifacts : '**/target/*.jar'
             }
         }
         stage ('junits') {
             steps {
-                junit testresults :"**/surefire-reports/*.xml"
+               junit testresults : 'target/surefire-reports/*.xml'
             }
         }
 
