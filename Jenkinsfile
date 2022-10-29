@@ -1,23 +1,25 @@
 pipeline {
      agent any
-    triggers { ('* * * * *') }
+    triggers { ('*/10 * * * *') }
     stages ('vcs') {
         stage {
-            git url : 'https://github.com/Veerababu07/spring-petclinic.git',
-             branch : 'main'
+            steps {
+               git url : 'https://github.com/Veerababu07/spring-petclinic.git',
+                 branch : 'main'
+            }
         }
         stage ('build') {
-            step {
+            steps {
                sh 'mvn package'
             }
         }
         stage ('artifacts') {
-            step {
+            steps {
                 archiveArtifacts artifacts  '**/target/*.jar'
             }
         }
         stage ('artifacts results') {
-            step {
+            steps {
                 junit '**/surefire-reports/*.xml'
             }
         }
