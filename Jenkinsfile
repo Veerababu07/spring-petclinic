@@ -1,6 +1,6 @@
 pipeline {
      agent any
-    triggers ('* * * * *')
+    triggers { ('* * * * *') }
     stages ('vcs') {
         stage {
             git url : 'https://github.com/Veerababu07/spring-petclinic.git',
