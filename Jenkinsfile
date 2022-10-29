@@ -1,5 +1,5 @@
 pipeline {
-     agent ('node') { ( label 'jdk-11' ) }
+     agent any
     triggers ('* * * * *')
     stages ('vcs') {
         stage {
