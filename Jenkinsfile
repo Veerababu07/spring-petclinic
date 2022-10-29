@@ -1,16 +1,20 @@
 pipeline{
-    agent {label 'jdk11'}
-     stages {
-        stage('vcs') {
+    agent ( label node1 )
+    triggers ('* * * * *')
+    stages {
+        stage ("vcs") {
             steps {
-                git url: 'https://github.com/Veerababu07/spring-petclinic.git',
-                    branch : 'main'
-            }    
+                git url : 'https://github.com/Veerababu07/spring-petclinic.git'
+              branch : 'main'
+            }
+            
         }
-        stage('build') {
-            steps  {
-                sh 'usr/share/maven/bin/mvn package'
+        stage ("build") {
+            steps {
+                sh "mvn package"
             }
         }
+
     }
+    
 }
