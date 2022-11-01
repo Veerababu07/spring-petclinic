@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage ('vcs') {
             steps {
-               git url :'https://github.com/Veerababu07/spring-petclinic.git'
+               git url :'https://github.com/Veerababu07/spring-petclinic.git',
                  branch : "rel_1.0 ${params.BRANCH_TO_BUILD}"
             }
         } 
