@@ -1,5 +1,5 @@
 pipeline {
-    agent { lable 'openjdk-11-mvn' }
+    agent any
     triggers { pollSCM('* * * * *') }
     parameters {
         choice(name: 'BRANCH_TO_BUILD', choices: ['rel_1.0'], description: 'BRANCH TO BUIL IN THE SCRIPT')
