@@ -5,8 +5,8 @@ pipeline {
         choice(name: 'BRANCH_TO_BUILD', choices: ['rel_1.0'], description: 'BRANCH TO BUIL IN THE SCRIPT')
         string(name: 'MAVEN_GOAL', defaultValue: 'package', description: 'maven goal')
     } 
-    stages ('vcs') {
-        stage {
+    stages {
+        stage ('vcs') {
             steps {
                git url :'https://github.com/Veerababu07/spring-petclinic.git',
                  branch : "rel_1.0 ${params.BRANCH_TO_BUILD}"
