@@ -2,8 +2,8 @@ pipeline {
     agent any
     triggers { pollSCM('* * * * *') }
     parameters {
-        choice(name: 'BRANCH_TO_BUILD', choices: ['rel_1.0'], description: 'BRANCH TO BUIL IN THE SCRIPT')
-        string(name: 'MAVEN_GOAL', defaultValue: 'mvn package', description: 'MAVEN PACKAGE')
+        choice(name: 'BRANCH_TO_BUILD', choices: ["rel_1.0", "main"], description: 'BRANCH TO BUIL IN THE SCRIPT')
+        string(name: 'MAVEN_GOAL', defaultValue: 'package', description: 'MAVEN PACKAGE')
     } 
     stages {
         stage ('vcs') {
