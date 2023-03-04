@@ -1,7 +1,7 @@
 ---
 pool: 
-  name: " Azure pipelines "
-  vmImage: "ubuntu-20.4"
+  name: "Azure pipelines"
+  vmImage: "ubuntu-latest"
 
 trigger:
   - main
@@ -10,6 +10,6 @@ steps:
     displayName: my-maven  
     inputs:
       mavenPOMFile: 'pom.xml'
-      goals: package
+      goals: 'package'
       testResultsFiles: "**/surefire-reports/TEST-*.xml."
-      javaHomeOption: JDKVersion
+      javaHomeOption: 'JDKVersion'
