@@ -1,0 +1,18 @@
+---
+pool: 
+  name: "Azure pipelines"
+  vmImage: "ubuntu-22.04"
+
+trigger:
+  - main
+variables:
+- name: output
+  value: package
+steps: 
+  - task: Maven@4
+    displayName: my-maven  
+    inputs:
+      mavenPOMFile: 'pom.xml' 
+      goals: $(variable.value)
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      javaHomeOption: 'JDKVersion'
