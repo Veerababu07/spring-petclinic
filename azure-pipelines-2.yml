@@ -13,6 +13,6 @@ steps:
     displayName: my-maven  
     inputs:
       mavenPOMFile: 'pom.xml' 
-      goals: $(variable.output)
+      goals: $(variable.name)
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       javaHomeOption: 'JDKVersion'
