@@ -5,16 +5,12 @@ pool:
 
 trigger:
   - main
-variables:
-- name: maven
-  value: Maven@4
-- name: output
-  value: package
+
 steps: 
-  - task: $(variable.maven) 
+  - task: Maven@4
     displayName: my-maven  
     inputs:
       mavenPOMFile: 'pom.xml' 
-      goals: $(variable.output)
+      goals: 'package'
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       javaHomeOption: 'JDKVersion'
