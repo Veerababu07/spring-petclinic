@@ -1,18 +1,29 @@
 ---
-pool: 
-  name: "Azure pipelines"
-  vmImage: "ubuntu-22.04"
+pool:
+  Vmimage: "ubuntu-latest"
+  name: my-varspring
 
 trigger:
   - main
+parameters:
+  name: spring
+  type: string
+  default: package
+  values:
+    - compile
+    - test
+    - package
+    - build
+    - deploy
+
 variables:
-- name: output
-  value: package
-steps: 
-  - task: Maven@4
-    displayName: my-maven  
-    inputs:
-      mavenPOMFile: 'pom.xml' 
-      goals: $(variable.name)
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
+- name: task
+  value: Maven@4 
+steps:
+  - task: ${{ variables.task }} 
+      inputs:
+        mavenPOMFile: 'pom.xml'
+        goals: ${{ parameters.spring }}
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        publishJUnitResults: true
+        jdkVersionOption: '1.7'
