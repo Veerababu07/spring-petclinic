@@ -19,7 +19,7 @@ jobs:
     displayName : springpet-clinic
     dependsOn: software_installations
     steps:
-      - task: Maven@4
+      - task: Maven@3
         inputs: 
           command: "mvn package"
           mavenPOMFile: pom.xml.
